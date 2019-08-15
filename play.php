@@ -1,3 +1,7 @@
+<?php 
+include 'inc/Game.php';
+include 'inc/Phrase.php';
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>

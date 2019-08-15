@@ -1,3 +1,4 @@
+<?php 
 class Phrase 
 {
 	private $currentPhrase;
@@ -9,7 +10,7 @@ class Phrase
 	}
 	
 	function addPhraseToDisplay() {
-		$phraseHTML = "<div id="phrase" class="section"><ul>";
+		$phraseHTML = '<div id="phrase" class="section"><ul>';
 		$letters = str_split(strtolower($this->currentPhrase));
 		foreach($letters as $letter) {
 			if ($letter) {
@@ -27,6 +28,14 @@ class Phrase
 		return in_array($letter, $letters);
 	}
 	
+	function getPhrase() {
+		return $this->currentPhrase;
+	}
+	
+	function getSelected () {
+		return $this->selected;
+	}
+	
 	
 }
-
+?>
