@@ -2,10 +2,10 @@
 class Game 
 {
 	private $phrase;
-	private $lives;
+	private $lives = 5;
 	
 	function __construct($Phrase) {
-		$this->$phrase = $Phrase;
+		$this->phrase = $Phrase;
 	}
 	
 	function checkForWin() {
@@ -37,27 +37,30 @@ class Game
 			['q', 'w', 'e', 'r', 't', 'y', 'u', 'i', 'o', 'p'],
 			['a', 's', 'd', 'f', 'g', 'h', 'j', 'k', 'l'],
 			['z', 'x', 'c', 'v', 'b', 'n', 'm']
-		]
-		$keyboardHTML = '<div id="qwerty" class="section">';
+		];
+		$keyboardHTML = '<div id="qwerty" class="section"><form id="keyb" action="play.php" method="POST">';
 		foreach($keyboardRows as $row) {
 			$keyboardHTML .= '<div class="keyrow">';
 			foreach ($row as $letter) {
-				$keyboardHTML .= '<button class="key';
+				$keyboardHTML .= '<button type="submit" name="key" value=';
+				$keyboardHTML .= $letter;
+				$keyboardHTML .= ' class="key';
 				if ($this->phrase->checkLetter($letter)) {
-					$keyboardHTML .= 'correct';
-				else {
-					$keyboardHTML .= 'incorrect';
+					$keyboardHTML .= ' correct';
+				} else {
+					$keyboardHTML .= ' incorrect';
 				}
 				$keyboardHTML .= '"';
-				if in_array($letter, $this->phrase->getSelected()) {
-					$keyboardHTML .= 'style="background-color: red" disabled>';
+				if (in_array($letter, $this->phrase->getSelected())) {
+					$keyboardHTML .= 'style="background-color: red" disabled';
 				}
+				$keyboardHTML .= '>';
 				$keyboardHTML .= $letter;
 				$keyboardHTML .= '</button>';
 			}
 			$keyboardHTML .= '</div>';
 		}
-		$keyboardHTML .= '</div>';
+		$keyboardHTML .= '</form></div>';
 		return $keyboardHTML;
 	}
 	

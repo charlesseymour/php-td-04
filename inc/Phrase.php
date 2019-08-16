@@ -1,20 +1,24 @@
 <?php 
 class Phrase 
 {
-	private $currentPhrase;
+	private $currentPhrase = "dream big";
 	private $selected = [];
 	
 	function __construct($phrase = null, $selected = null) {
-		$this->currentPhrase = $phrase;
-		$this->selected = $selected;
+		if (!empty($phrase)) {
+			$this->currentPhrase = $phrase;
+		}
+		if (!empty($selected)) {
+			$this->selected = $selected;
+		}
 	}
 	
 	function addPhraseToDisplay() {
 		$phraseHTML = '<div id="phrase" class="section"><ul>';
 		$letters = str_split(strtolower($this->currentPhrase));
 		foreach($letters as $letter) {
-			if ($letter) {
-				$phraseHTML .= '<li class="hide letter h">' . $letter . '</li>';
+			if ($letter !== " ") {
+				$phraseHTML .= '<li class="hide letter ' . $letter . '">' . $letter . '</li>';
 			} else {
 				$phraseHTML .= '<li class="hide space"> </li>';
 			}
