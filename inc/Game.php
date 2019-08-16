@@ -32,6 +32,20 @@ class Game
 		}
 	}
 	
+	function styleKey($key) {
+		$keyHTML = "";
+		if (in_array($key, $this->phrase->getSelected())) {
+			if ($this->phrase->checkLetter($key)) {
+				$keyHTML .= ' correct" style="background-color: green" disabled';
+			} else {
+				$keyHTML .= ' incorrect" style="background-color: red" disabled';
+			}
+		} else {
+			$keyHTML .= '"';
+		}
+		return $keyHTML;
+	}
+	
 	function displayKeyboard() {
 		$keyboardRows = [
 			['q', 'w', 'e', 'r', 't', 'y', 'u', 'i', 'o', 'p'],
@@ -42,21 +56,15 @@ class Game
 		foreach($keyboardRows as $row) {
 			$keyboardHTML .= '<div class="keyrow">';
 			foreach ($row as $letter) {
-				$keyboardHTML .= '<button type="submit" name="key" value=';
+				/*$keyboardHTML .= '<button type="submit" form="keyb" name="key" value=';
 				$keyboardHTML .= $letter;
 				$keyboardHTML .= ' class="key';
-				if ($this->phrase->checkLetter($letter)) {
-					$keyboardHTML .= ' correct';
-				} else {
-					$keyboardHTML .= ' incorrect';
-				}
-				$keyboardHTML .= '"';
-				if (in_array($letter, $this->phrase->getSelected())) {
-					$keyboardHTML .= 'style="background-color: red" disabled';
-				}
+				$keyboardHTML .= $this->styleKey($letter);				
 				$keyboardHTML .= '>';
 				$keyboardHTML .= $letter;
-				$keyboardHTML .= '</button>';
+				$keyboardHTML .= '</button>';*/
+				$keyboardHTML .= '<button type="submit" form="keyb" name="key" value=' . $letter . ' class="key' .
+								 $this->styleKey($letter) . '>' . $letter . '</button>';
 			}
 			$keyboardHTML .= '</div>';
 		}

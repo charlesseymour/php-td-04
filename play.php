@@ -1,9 +1,21 @@
-<?php 
+<?php
+session_start();
+
 include 'inc/Game.php';
 include 'inc/Phrase.php';
 
-$phrase = new Phrase();
+$_SESSION['phrase'] = 'start small';
+if (!isset($_SESSION['selected'])) {
+	$_SESSION['selected'] = [];
+}
+if (isset($_POST['key'])) {
+	$_SESSION['selected'][] = $_POST['key'];
+}
+
+$phrase = new Phrase($_SESSION['phrase'], $_SESSION['selected']);
 $game = new Game($phrase);
+var_dump($_SESSION);
+var_dump($phrase->checkLetter('b'));
 
 ?>
 <!DOCTYPE html>
@@ -23,6 +35,7 @@ $game = new Game($phrase);
             <?php 
 			echo $phrase->addPhraseToDisplay(); 
 			echo $game->displayKeyboard();
+			echo $game->displayScore();
 			?>
 		</div>
 
