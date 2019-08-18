@@ -3,10 +3,20 @@ class Phrase
 {
 	private $currentPhrase = "dream big";
 	private $selected = [];
+	public $phrases = [
+			'Boldness be my friend',
+			'Leave no stone unturned',
+			'Broken crayons still color',
+			'The adventure begins',
+			'Dream without fear',
+			'Love without limits'
+	];
 	
 	function __construct($phrase = null, $selected = null) {
 		if (!empty($phrase)) {
 			$this->currentPhrase = $phrase;
+		} else {
+			$this->currentPhrase = $this->phrases[rand(0, count($this->phrases) - 1)];
 		}
 		if (!empty($selected)) {
 			$this->selected = $selected;

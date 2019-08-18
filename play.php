@@ -9,18 +9,23 @@ if (isset($_POST['start'])) {
 	unset($_SESSION['phrase']);
 }
 
-$_SESSION['phrase'] = 'start small';
 if (!isset($_SESSION['selected'])) {
 	$_SESSION['selected'] = [];
 }
 if (isset($_POST['key'])) {
 	$_SESSION['selected'][] = $_POST['key'];
 }
+if (isset($_SESSION['phrase'])) {
+	$phrase = new Phrase($_SESSION['phrase'], $_SESSION['selected']);
+} else {
+	$phrase = new Phrase();
+	$_SESSION['phrase'] = $phrase->getPhrase();
+}
 
-$phrase = new Phrase($_SESSION['phrase'], $_SESSION['selected']);
 $game = new Game($phrase);
 //var_dump($_SESSION);
 //var_dump($phrase->checkLetter('b'));
+echo($phrase->getPhrase());
 
 ?>
 <!DOCTYPE html>
