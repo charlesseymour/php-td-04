@@ -18,7 +18,11 @@ class Phrase
 		$letters = str_split(strtolower($this->currentPhrase));
 		foreach($letters as $letter) {
 			if ($letter !== " ") {
-				$phraseHTML .= '<li class="hide letter ' . $letter . '">' . $letter . '</li>';
+				if (in_array($letter, $this->selected)) {
+					$phraseHTML .= '<li class="show letter ' . $letter . '">' . $letter . '</li>';
+				} else {
+					$phraseHTML .= '<li class="hide letter ' . $letter . '">' . $letter . '</li>';
+				}
 			} else {
 				$phraseHTML .= '<li class="hide space"> </li>';
 			}
