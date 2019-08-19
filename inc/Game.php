@@ -13,7 +13,6 @@ class Game
 	}
 	
 	function checkForWin() {
-		var_dump(array_intersect($this->phrase->getSelected(), $this->phrase->getLetterArray()));
 		return count(array_intersect($this->phrase->getSelected(), $this->phrase->getLetterArray())) == 
 			   count($this->phrase->getLetterArray());
 	}
@@ -60,7 +59,7 @@ class Game
 		foreach($keyboardRows as $row) {
 			$keyboardHTML .= '<div class="keyrow">';
 			foreach ($row as $letter) {
-				$keyboardHTML .= '<button type="submit" form="keyb" name="key" value=' . $letter . ' class="key' .
+				$keyboardHTML .= '<button id="' . $letter . '_key" type="submit" form="keyb" name="key" value=' . $letter . ' class="key' .
 								 $this->styleKey($letter) . '>' . $letter . '</button>';
 			}
 			$keyboardHTML .= '</div>';

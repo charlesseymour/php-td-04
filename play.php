@@ -35,6 +35,16 @@ $game = new Game($phrase);
 		<link href="css/animate.css" rel="stylesheet">
 		<link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet">
 	</head>
+	
+	<script>
+		document.addEventListener("keydown", function(event) {
+			if (event.which >= 65 && event.which <= 90) {
+				let id = String.fromCharCode(event.which);
+				id = id.toLowerCase() + "_key";
+			    document.getElementById(id).click();
+			}
+		})
+	</script>
 
 	<body>
 		<div class="main-container">
