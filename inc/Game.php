@@ -8,7 +8,7 @@ class Game
 		$this->phrase = $Phrase;
 	}
 	
-	function checkForWin() {
+	/*function checkForWin() {
 		$phraseLetters = array_unique(str_split(str_replace(' ', '',strtolower($this->$phrase->getPhrase()))));
 		foreach ($phraseLetters as $phraseLetter) {
 			if (!in_array($phraseLetter, $this->phrase->getSelected())) {
@@ -16,19 +16,23 @@ class Game
 			}
 		}
 		return true;
-	}
+	}*/
 	
 	function checkForLose() {
 		return $this->phrase->numberLost() >= $this->lives;
 	}
 	
+	function checkForWin() {
+		var_dump(array_intersect($this->phrase->getSelected(), $this->phrase->getLetterArray()));
+		return count(array_intersect($this->phrase->getSelected(), $this->phrase->getLetterArray())) == 
+			   count($this->phrase->getLetterArray());
+	}
+	
 	function gameOver() {
-		if (checkForWin()) {
-			echo "Congratulations, you won!";
-		} elseif (checkForLose()) {
-			echo "Sorry, you lost.";
+		if ($this->checkForLose()) {
+			return '<h1 id="overlay" class="lose">The phrase was: "' . $this->phrase->getPhrase() . '". Better luck next time!</h1>';
 		} else {
-			return false;
+			//return '<h1 id="game-over-message">Congratulations on guessing: "' . $this->phrase->getPhrase() . '"</h1>';
 		}
 	}
 	

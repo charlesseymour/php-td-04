@@ -27,7 +27,8 @@ $game = new Game($phrase);
 //var_dump($_SESSION);
 //var_dump($phrase->checkLetter('b'));
 //echo($phrase->getPhrase());
-var_dump($game->checkForLose());
+//var_dump($game->checkForLose());
+var_dump($game->checkForWin());
 
 ?>
 <!DOCTYPE html>
@@ -45,6 +46,7 @@ var_dump($game->checkForLose());
 		<div class="main-container">
 			<h2 class="header">Phrase Hunter</h2>
             <?php 
+			echo $game->gameOver();
 			echo $phrase->addPhraseToDisplay(); 
 			echo $game->displayKeyboard();
 			echo $game->displayScore();
