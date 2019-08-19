@@ -8,16 +8,6 @@ class Game
 		$this->phrase = $Phrase;
 	}
 	
-	/*function checkForWin() {
-		$phraseLetters = array_unique(str_split(str_replace(' ', '',strtolower($this->$phrase->getPhrase()))));
-		foreach ($phraseLetters as $phraseLetter) {
-			if (!in_array($phraseLetter, $this->phrase->getSelected())) {
-				return false;
-			}
-		}
-		return true;
-	}*/
-	
 	function checkForLose() {
 		return $this->phrase->numberLost() >= $this->lives;
 	}
@@ -30,9 +20,19 @@ class Game
 	
 	function gameOver() {
 		if ($this->checkForLose()) {
-			return '<h1 id="overlay" class="lose">The phrase was: "' . $this->phrase->getPhrase() . '". Better luck next time!</h1>';
+			return '<h1 id="overlay" class="lose">The phrase was: "' . $this->phrase->getPhrase() . 
+			'". Better luck next time!
+			<form class="restart" action="play.php" method="post">
+                <input id="btn__reset" type="submit" name="start" value="Start Game" />
+            </form>
+			</h1>';
 		} else if ($this->checkForWin()) {
-			return '<h1 id="overlay" class="win">Congratulations on guessing: "' . $this->phrase->getPhrase() . '"</h1>';
+			return '<h1 id="overlay" class="win">Congratulations on guessing: "' . $this->phrase->getPhrase() . 
+			'"!
+			<form class="restart" action="play.php" method="post">
+                <input id="btn__reset" type="submit" name="start" value="Start Game" />
+            </form>
+			</h1>';
 		}
 	}
 	
@@ -60,13 +60,6 @@ class Game
 		foreach($keyboardRows as $row) {
 			$keyboardHTML .= '<div class="keyrow">';
 			foreach ($row as $letter) {
-				/*$keyboardHTML .= '<button type="submit" form="keyb" name="key" value=';
-				$keyboardHTML .= $letter;
-				$keyboardHTML .= ' class="key';
-				$keyboardHTML .= $this->styleKey($letter);				
-				$keyboardHTML .= '>';
-				$keyboardHTML .= $letter;
-				$keyboardHTML .= '</button>';*/
 				$keyboardHTML .= '<button type="submit" form="keyb" name="key" value=' . $letter . ' class="key' .
 								 $this->styleKey($letter) . '>' . $letter . '</button>';
 			}
