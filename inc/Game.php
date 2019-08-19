@@ -31,8 +31,8 @@ class Game
 	function gameOver() {
 		if ($this->checkForLose()) {
 			return '<h1 id="overlay" class="lose">The phrase was: "' . $this->phrase->getPhrase() . '". Better luck next time!</h1>';
-		} else {
-			//return '<h1 id="game-over-message">Congratulations on guessing: "' . $this->phrase->getPhrase() . '"</h1>';
+		} else if ($this->checkForWin()) {
+			return '<h1 id="overlay" class="win">Congratulations on guessing: "' . $this->phrase->getPhrase() . '"</h1>';
 		}
 	}
 	
