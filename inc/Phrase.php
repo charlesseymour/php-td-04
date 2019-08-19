@@ -50,8 +50,8 @@ class Phrase
 	}
 	
 	function numberLost() {
-		var_dump($this->getLetterArray());
-		var_dump(array_diff($this->selected, $this->getLetterArray()));
+		//var_dump($this->getLetterArray());
+		//var_dump(array_diff($this->selected, $this->getLetterArray()));
 		return count(array_diff($this->selected, $this->getLetterArray()));
 	}
 	

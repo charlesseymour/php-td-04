@@ -19,7 +19,7 @@ class Game
 	}
 	
 	function checkForLose() {
-		return count($this->phrase->getSelected()) >= count($this->lives);
+		return $this->phrase->numberLost() >= $this->lives;
 	}
 	
 	function gameOver() {

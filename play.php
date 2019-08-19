@@ -26,7 +26,8 @@ echo($phrase->numberLost());
 $game = new Game($phrase);
 //var_dump($_SESSION);
 //var_dump($phrase->checkLetter('b'));
-echo($phrase->getPhrase());
+//echo($phrase->getPhrase());
+var_dump($game->checkForLose());
 
 ?>
 <!DOCTYPE html>
