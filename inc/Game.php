@@ -74,10 +74,10 @@ class Game
 	
 	function displayScore() {
 		$scoreHTML = '<div id="scoreboard" class="section"><ol>';
-		for ($i = 0; $i < (5 - $this->lives); $i++) {
-			$scoreHTML .= '<li class="tries"><img src="images/loseHeart.png" height="35px" widght="30px"></li>';
+		for ($i = 0; $i < ($this->phrase->numberLost()); $i++) {
+			$scoreHTML .= '<li class="tries"><img src="images/lostHeart.png" height="35px" widght="30px"></li>';
 		}
-		for ($i = 0; $i < $this->lives; $i++) {
+		for ($i = 0; $i < ($this->lives - $this->phrase->numberLost()); $i++) {
 			$scoreHTML .= '<li class="tries"><img src="images/liveHeart.png" height="35px" widght="30px"></li>';
 		}
 		$scoreHTML .= '</ol></div>';
