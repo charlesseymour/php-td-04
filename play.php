@@ -22,6 +22,7 @@ if (isset($_SESSION['phrase'])) {
 	$_SESSION['phrase'] = $phrase->getPhrase();
 }
 
+echo($phrase->numberLost());
 $game = new Game($phrase);
 //var_dump($_SESSION);
 //var_dump($phrase->checkLetter('b'));

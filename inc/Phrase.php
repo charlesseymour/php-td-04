@@ -41,9 +41,18 @@ class Phrase
 		return $phraseHTML;
 	}
 	
+	function getLetterArray() {
+		return array_unique(str_split(str_replace(' ', '',strtolower($this->currentPhrase))));
+	}
+	
 	function checkLetter($letter) {
-		$letters = array_unique(str_split(str_replace(' ', '',strtolower($this->currentPhrase))));
-		return in_array($letter, $letters);
+		return $this->getLetterArray();
+	}
+	
+	function numberLost() {
+		var_dump($this->getLetterArray());
+		var_dump(array_diff($this->selected, $this->getLetterArray()));
+		return count(array_diff($this->selected, $this->getLetterArray()));
 	}
 	
 	function getPhrase() {
