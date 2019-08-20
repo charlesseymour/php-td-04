@@ -34,6 +34,7 @@ $game = new Game($phrase);
 		<link href="css/styles.css" rel="stylesheet">
 		<link href="css/animate.css" rel="stylesheet">
 		<link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet">
+		<link href="https://fonts.googleapis.com/css?family=Permanent+Marker&display=swap" rel="stylesheet">
 	</head>
 	
 	<script>

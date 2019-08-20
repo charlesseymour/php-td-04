@@ -39,9 +39,9 @@ class Game
 		$keyHTML = "";
 		if (in_array($key, $this->phrase->getSelected())) {
 			if ($this->phrase->checkLetter($key)) {
-				$keyHTML .= ' correct" style="background-color: green" disabled';
+				$keyHTML .= ' correct" style="background-color: MediumSeaGreen" disabled';
 			} else {
-				$keyHTML .= ' incorrect" style="background-color: red" disabled';
+				$keyHTML .= ' incorrect" style="background-color: LightCoral" disabled';
 			}
 		} else {
 			$keyHTML .= '"';

@@ -46,7 +46,7 @@ class Phrase
 	}
 	
 	function checkLetter($letter) {
-		return $this->getLetterArray();
+		return in_array($letter, $this->getLetterArray());
 	}
 	
 	function numberLost() {
